@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head class="bg">
+        <% include ./partials/head.ejs %>
+    </head>
+    <body>
+        <%include ./partials/navbar.ejs %>
+        <main class="container">
+            <% include ./partials/messages.ejs %>
+            <% if(currentUser) { %>
+                    <div class="gridded new-message">
+                        <form action="/message" method="POST" style="margin-top: 5rem;">
+                            <input type="text" class="form-control" name="message" placeholder="type message">
+                            <button type="submit">Send</button>
+                        </form>
+                        <div style="margin-top: 5rem; grid-column: 2 3;">
+                            <% messages.forEach((message) => { %>
+                                <div class="gridded message">
+                                    <div class="msg-body">
+                                        <%= message.body %>
+                                    </div>
+                                        <% if(currentUser.id == message.id) { %>
+                                            <div class="msg-sender this">
+                                                You
+                                            </div>
+                                        <% } else { %>
+                                            <div class="msg-sender them">
+                                                Them
+                                            </div>
+                                        <% } %>
+                                </div>
+                            <% }) %>
+                        </div>
+                    </div>
+            <% } else { %>
+               
+            <% } %>
+        </main>
+        <% include ./partials/baseScripts.ejs %>
+    </body>
+</html>
