@@ -13,13 +13,13 @@
                             <input type="text" class="form-control" name="message" placeholder="type message">
                             <button type="submit">Send</button>
                         </form>
-                        <div style="margin-top: 5rem; grid-column: 2 3;">
+                        <div style="margin-top: 5rem; grid-column: 2 / 3;">
                             <% messages.forEach((message) => { %>
                                 <div class="gridded message">
                                     <div class="msg-body">
                                         <%= message.body %>
                                     </div>
-                                        <% if(currentUser.id == message.id) { %>
+                                        <% if(currentUser.id == message.userId) { %>
                                             <div class="msg-sender this">
                                                 You
                                             </div>
